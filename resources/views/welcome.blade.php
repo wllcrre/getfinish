@@ -92,8 +92,10 @@
                 <br><br><br><br><br>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/5Hs2jK8XDHY" frameborder="0" allowfullscreen></iframe>
                 <br><br><br>
-                <img src="/images/piano.png" alt="">
+
             </div>
         </div>
+
+        <img src="/images/piano.png" alt="">
     </body>
 </html>
