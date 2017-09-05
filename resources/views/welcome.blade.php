@@ -95,7 +95,5 @@
 
             </div>
         </div>
-
-        <img src="/images/piano.png" alt="">
     </body>
 </html>
