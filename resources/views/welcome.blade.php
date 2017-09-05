@@ -89,6 +89,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5Hs2jK8XDHY" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </body>
