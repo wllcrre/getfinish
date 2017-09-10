@@ -27,6 +27,8 @@ Route::get('contact', function () {
 
 Route::get('/', 'PagesController@getIndex');
 
+Route::get('welcome', 'PagesController@getWelcome');
+
 Route::get('about', 'PagesController@getAbout');
 
 Route::get('contact', 'PagesController@getContact');

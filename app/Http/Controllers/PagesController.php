@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 class PagesController extends Controller {
 
 	public function getIndex() {
+		return view('pages/home');
+	}
+
+	public function getWelcome() {
 		return view('pages/welcome');
 	}
 
