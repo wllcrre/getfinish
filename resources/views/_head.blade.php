@@ -1,4 +1,34 @@
+
   <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Laravel blog @yield('title')</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+
+    @yield('stylesheets')
+
+     <style type="text/css"> 
+        .nav-item.active {
+            background-color: rgba(1, 67, 52, 0.07);
+        }
+
+        nav {
+          margin-bottom: 40px;
+        } 
+
+        .title {
+            font-size: 44px;
+        }
+    </style> 
+  </head>
+
+
+
+{{--   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,4 +92,4 @@
             margin-bottom: 30px;
         }
     </style>
-  </head>
+  </head> --}}
