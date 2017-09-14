@@ -16,7 +16,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        //create a variablel and store all posts in it from database
+        $items = Item::all();
+
+        //return a view and pass in the about variable
+        return view('items.index')->withItems($items);
     }
 
     /**

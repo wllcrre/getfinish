@@ -1,0 +1,7 @@
+.nav-item.active {
+    background-color: rgba(1, 67, 52, 0.07);
+}
+
+nav {
+  margin-bottom: 40px;
+} 

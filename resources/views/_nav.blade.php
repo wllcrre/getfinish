@@ -16,7 +16,10 @@
           </li> 
           <li class="nav-item">
             <a class="nav-link" href="/items/create">新增事項</a>
-          </li>           
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/items">待辦事項</a>
+          </li>            
 
 
           <li class="nav-item dropdown">
