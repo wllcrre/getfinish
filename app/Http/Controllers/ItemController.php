@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;//應該指的是 Item Model
+use Session;//For Message 上傳成功訊息 Session::flash()
 
 
 class ItemController extends Controller
@@ -48,12 +49,14 @@ class ItemController extends Controller
         $item->name = $request->name;
         $item->body = $request->body;
 
-        //kevin heree 待修改
+        //kevin heree 待create view更新後修改這裏
         $item->mid = 0;
         $item->status = 'start';
         $item->priority = 'normal';
 
         $item->save();
+
+        Session::flash('success', '待辦事項已成功建立!');
 
         //redirect to another URL
         return redirect()->route('items.show',$item->id);
@@ -68,7 +71,7 @@ class ItemController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('items.show');
     }
 
     /**
