@@ -14,6 +14,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/contact">連絡我們</a>
           </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="/items/create">新增事項</a>
+          </li>           
 
 
           <li class="nav-item dropdown">
