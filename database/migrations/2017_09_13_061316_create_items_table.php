@@ -16,7 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('body');
+            $table->text('body')->nullable()->change();
             $table->unsignedInteger('mid');//main item id
             $table->enum('status', ['done', 'close','start'])->default('start');
             $table->enum('priority', ['high', 'normal','low'])->default('normal');

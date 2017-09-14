@@ -2,6 +2,10 @@
 
 @section('title', '| Create New Item')
 
+@section('stylesheets')
+	{!! Html::style('css/parsley.css') !!}
+@endsection
+
 @section('content')
 
 	<div class="row">
@@ -9,9 +13,9 @@
 			<h1>新增待辦事項</h1>
 			<hr>
 
-			{!! Form::open(['route' => 'items.store']) !!}
+			{!! Form::open(array('route' => 'items.store','data-parsley-validate' => '')) !!}
 				{{ Form::label('name', 'Name:')}}
-				{{ Form::text('name', null , array('class' => 'form-control'))}}
+				{{ Form::text('name', null , array('class' => 'form-control','required' => '','maxlength' => '255'))}}
 
 				{{ Form::label('body', 'Item Body:')}}
 				{{ Form::textarea('body', null, array('class' => 'form-control'))}}
@@ -20,4 +24,9 @@
 			{!! Form::close() !!}			
 		</div>
 	</div>
+@endsection
+
+
+@section('scripts')
+	{!! Html::script('js/parsley.min.js') !!}
 @endsection
