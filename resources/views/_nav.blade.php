@@ -5,19 +5,19 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item active">
+          <li class="nav-item {{ Request::is('/') ? "active" : "" }}">
             <a class="nav-link" href="/">首頁 <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::is('about') ? "active" : "" }}">
             <a class="nav-link" href="/about">關於我們</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::is('contact') ? "active" : "" }}">
             <a class="nav-link" href="/contact">連絡我們</a>
           </li> 
-          <li class="nav-item">
+          <li class="nav-item {{ Request::is('items/create') ? "active" : "" }}">
             <a class="nav-link" href="/items/create">新增事項</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ Request::is('items') ? "active" : "" }}">
             <a class="nav-link" href="/items">待辦事項</a>
           </li>            
 
