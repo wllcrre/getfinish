@@ -8,7 +8,13 @@
 
 	<div class="row">
 
-		{!! Form::model($item, array('route' => ['items.update', $item->id])) !!}
+		{{-- {!! Form::model($item, array('route' => ['items.update', $item->id])) !!} --}}
+		<!--Important : Must add PUT Method for items.update-->
+		{!! Form::model($item, array('route' => ['items.update', $item->id],'method' => 'PUT')) !!}
+		
+
+
+
 		<div class="col-md-8">
 			{{ Form::label('name','Name:') }}
 			{{ Form::text('name',null,["class" => 'form-control input-lg']) }}
@@ -37,8 +43,8 @@
 						{{-- <a href="#" class='btn btn-primary btn-block'>Edit</a> --}}
 					</div>
 					<div class="col-sm-6">
-						{!! Html::linkRoute('items.update', 'Save', array($item->id), array('class' => 'btn btn-success btn-block'))!!}					
-						{{-- <a href="#" class='btn btn-danger btn-block'>Delete</a> --}}
+						{{-- {!! Html::linkRoute('items.update', 'Save', array($item->id), array('class' => 'btn btn-success btn-block'))!!} --}}
+						{{ Form::submit('Save Changes', array('class' => 'btn btn-success btn-block'))}}				
 					</div>					
 				</div>				
 			</div>

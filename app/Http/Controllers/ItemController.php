@@ -104,7 +104,28 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //　這裏只要執行資料庫更新,不用顯示頁面，因為在 edit() 已經有產生 posts.edit 頁面了。
+
+        //validate the data
+        $this->validate($request,array(
+                'name' => 'required|max:255'
+                // 'body' => 'required'
+            )); 
+
+        // save data to database
+        $item = Item::find($id);
+
+        $item->name = $request->input('name');
+        $item->body = $request->input('body');
+
+        $item->save();        
+
+        // set flash data with success message
+        Session::flash('success', 'The blog item was successfully save!');
+
+        //redirect with flash data to posts.index
+        return redirect()->route('items.index', $item->id);        
+
     }
 
     /**
