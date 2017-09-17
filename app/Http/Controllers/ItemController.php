@@ -136,6 +136,11 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::find($id);
+        $item->delete();
+
+        Session::flash('success', "this item successfully delete");
+        return redirect()->route('items.index');
+
     }
 }
