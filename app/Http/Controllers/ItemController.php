@@ -87,7 +87,12 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+        // find the item in database and save as a var
+        $item = Item::find($id);
+
+        //return the view and pass the item var
+        return view('items.edit')->withItem($item);
+
     }
 
     /**
