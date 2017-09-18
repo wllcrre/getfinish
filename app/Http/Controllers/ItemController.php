@@ -18,7 +18,7 @@ class ItemController extends Controller
     {
         //create a variablel and store all posts in it from database
         // $items = Item::all();
-        $items = Item::orderBy('id','asc')->paginate(10);
+        $items = Item::orderBy('id','asc')->paginate(5);
         //example http://getfinish.dev/items?page=2
 
         //return a view and pass in the about variable
