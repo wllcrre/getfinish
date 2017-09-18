@@ -15,7 +15,10 @@
 
 			{!! Form::open(array('route' => 'items.store','data-parsley-validate' => '')) !!}
 				{{ Form::label('name', 'Name:')}}
-				{{ Form::text('name', null , array('class' => 'form-control','required' => '','maxlength' => '255'))}}
+				{{ Form::text('name', null , array('class' => 'form-control','required' => '','minlength' => '5','maxlength' => '255'))}}
+
+				{{ Form::label('slug', 'Slug:')}}
+				{{ Form::text('slug', null , array('class' => 'form-control','required' => '','maxlength' => '255'))}}
 
 				{{ Form::label('body', 'Item Body:')}}
 				{{ Form::textarea('body', null, array('class' => 'form-control'))}}

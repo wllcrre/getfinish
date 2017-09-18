@@ -7,11 +7,17 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h1>{{ $item->name }}</h1>
+			<p>{{ $item->slug }}</p>
 			<p class='lead'>{{ $item->body }}</p>
 		</div>
 
 		<div class="col-md-4">
 			<div class="card card-body bg-light">
+				<dl class="">
+				  <dt>URL:</dt>
+				  <dd><a href="{{ url($item->slug) }}">{{ url($item->slug) }}</a></dd>
+				</dl>
+
 				<dl class="">
 				  <dt>Create At:</dt>
 				  <dd>{{ date('Y-m-j h:i a', strtotime($item->created_at)) }}</dd>

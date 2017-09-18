@@ -46,6 +46,9 @@ class ItemController extends Controller
         //validate the data
         $this->validate($request,array(
                 'name' => 'required|max:255',
+                
+                //驗證唯一項目：　unique:items,slug
+                'slug' => 'required|alpha_dash|min:5|max:255|unique:items,slug'  
                 //'body' => 'required'
             )); 
 
@@ -54,6 +57,7 @@ class ItemController extends Controller
 
         $item->name = $request->name;
         $item->body = $request->body;
+        $item->slug = $request->slug;
 
         //kevin heree 待create view更新後修改這裏
         $item->mid = 0;
@@ -110,7 +114,10 @@ class ItemController extends Controller
 
         //validate the data
         $this->validate($request,array(
-                'name' => 'required|max:255'
+                'name' => 'required|max:255',
+
+                //驗證唯一項目：　unique:items,slug
+                'slug' => 'required|alpha_dash|min:5|max:255|unique:items,slug'                
                 // 'body' => 'required'
             )); 
 
@@ -118,6 +125,7 @@ class ItemController extends Controller
         $item = Item::find($id);
 
         $item->name = $request->input('name');
+        $item->slug = $request->input('slug');
         $item->body = $request->input('body');
 
         $item->save();        
