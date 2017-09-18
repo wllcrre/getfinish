@@ -42,7 +42,14 @@
 					@endforeach
 				</tbody>
 			</table>
+
+			<p class="text-center">
+				{{-- 頁碼 --}}
+				{!! $items->links(); !!}
+			</p>			
 		</div>
+
+
 	</div>
 
 @stop

@@ -17,7 +17,9 @@ class ItemController extends Controller
     public function index()
     {
         //create a variablel and store all posts in it from database
-        $items = Item::all();
+        // $items = Item::all();
+        $items = Item::orderBy('id','asc')->paginate(10);
+        //example http://getfinish.dev/items?page=2
 
         //return a view and pass in the about variable
         return view('items.index')->withItems($items);
