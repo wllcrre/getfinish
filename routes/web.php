@@ -29,6 +29,9 @@ Route::group(['middleware' => ['web']], function() {
 
 	Route::get('getfinish/{slug}',['as' => 'getfinish.single','uses' => 'GetfinishController@getSingle'])->where('slug', '[\w\d\-\_]+');
 
+	Route::get('getfinish', ['uses' => 'GetfinishController@getIndex', 'as' => 'getfinish.index']);
+
+
 	Route::get('/', 'PagesController@getIndex');
 
 	Route::get('welcome', 'PagesController@getWelcome');

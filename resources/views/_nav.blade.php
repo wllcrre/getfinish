@@ -8,12 +8,18 @@
           <li class="nav-item {{ Request::is('/') ? "active" : "" }}">
             <a class="nav-link" href="/">首頁 <span class="sr-only">(current)</span></a>
           </li>
+
+          <li class="nav-item {{ Request::is('getfinish') ? "active" : "" }}"><a class="nav-link"  href="/getfinish">最新項目</a></li>
+
           <li class="nav-item {{ Request::is('about') ? "active" : "" }}">
             <a class="nav-link" href="/about">關於我們</a>
           </li>
           <li class="nav-item {{ Request::is('contact') ? "active" : "" }}">
             <a class="nav-link" href="/contact">連絡我們</a>
           </li> 
+
+
+
           <li class="nav-item {{ Request::is('items/create') ? "active" : "" }}">
             <a class="nav-link" href="/items/create">新增事項</a>
           </li>
@@ -32,6 +38,10 @@
               <a class="dropdown-item" target="_blank" href="/welcome">Welcome</a>              
             </div>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>                    
         </ul>
 
 
