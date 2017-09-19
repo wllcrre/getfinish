@@ -15,7 +15,7 @@
 			<div class="card card-body bg-light">
 				<dl class="">
 				  <dt>URL:</dt>
-				  <dd><a href="{{ url($item->slug) }}">{{ url($item->slug) }}</a></dd>
+				  <dd><a href="{{ route('getfinish.single', $item->slug) }}">{{ route('getfinish.single', $item->slug) }}</a></dd>
 				</dl>
 
 				<dl class="">

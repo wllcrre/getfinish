@@ -112,16 +112,26 @@ class ItemController extends Controller
     {
         //　這裏只要執行資料庫更新,不用顯示頁面，因為在 edit() 已經有產生 posts.edit 頁面了。
 
-        //validate the data
-        $this->validate($request,array(
+        // Validate the data
+        $item = Item::find($id);
+        
+        if ($request->input('slug') == $item->slug) {
+
+            $this->validate($request, array(
+                'name' => 'required|max:255'
+                // 'body'  => 'required'
+            ));
+        } else {
+            $this->validate($request, array(
                 'name' => 'required|max:255',
 
                 //驗證唯一項目：　unique:items,slug
                 'slug' => 'required|alpha_dash|min:5|max:255|unique:items,slug'                
                 // 'body' => 'required'
-            )); 
+            ));
+        }
 
-        // save data to database
+        // Save the data to the database
         $item = Item::find($id);
 
         $item->name = $request->input('name');

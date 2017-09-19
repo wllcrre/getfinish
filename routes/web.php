@@ -24,13 +24,18 @@ Route::get('contact', function () {
     return view('contact');
 });*/
 
+//middleware is for CSRF attack protection
+Route::group(['middleware' => ['web']], function() {
 
-Route::get('/', 'PagesController@getIndex');
+	Route::get('getfinish/{slug}',['as' => 'getfinish.single','uses' => 'GetfinishController@getSingle'])->where('slug', '[\w\d\-\_]+');
 
-Route::get('welcome', 'PagesController@getWelcome');
+	Route::get('/', 'PagesController@getIndex');
 
-Route::get('about', 'PagesController@getAbout');
+	Route::get('welcome', 'PagesController@getWelcome');
 
-Route::get('contact', 'PagesController@getContact');
+	Route::get('about', 'PagesController@getAbout');
 
-Route::resource('items', 'ItemController');
+	Route::get('contact', 'PagesController@getContact');
+
+	Route::resource('items', 'ItemController');
+});
