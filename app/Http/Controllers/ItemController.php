@@ -9,6 +9,11 @@ use Session;//For Message 上傳成功訊息 Session::flash()
 
 class ItemController extends Controller
 {
+    public function __construct()
+    {
+        //如果你是login user，就可以訪問item list
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,7 @@ class ItemController extends Controller
     {
         //create a variablel and store all posts in it from database
         // $items = Item::all();
-        $items = Item::orderBy('id','asc')->paginate(5);
+        $items = Item::orderBy('id','asc')->paginate(30);
         //example http://getfinish.dev/items?page=2
 
         //return a view and pass in the about variable
@@ -69,7 +74,7 @@ class ItemController extends Controller
         Session::flash('success', '待辦事項已成功建立!');
 
         //redirect to another URL
-        return redirect()->route('items.show',$item->id);
+        return redirect()->route('items.index');
 
     }
 

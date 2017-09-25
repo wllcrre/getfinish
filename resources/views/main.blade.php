@@ -7,6 +7,8 @@
 
     @include('_nav')
 
+      {{-- {{ Auth::check() ? "Status: Logged In" : "Status: Logged Out" }} --}}
+
     <div class="container">
 
       @include('_messages')

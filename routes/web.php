@@ -27,12 +27,22 @@ Route::get('contact', function () {
 //middleware is for CSRF attack protection
 Route::group(['middleware' => ['web']], function() {
 
-	Route::get('getfinish/{slug}',['as' => 'getfinish.single','uses' => 'GetfinishController@getSingle'])->where('slug', '[\w\d\-\_]+');
+	// Authentication Routes
+	// Route::get('auth/login', 'Auth\LoginController@getLogin');
+	// Route::post('auth/login', 'Auth\LoginController@postLogin');
+	// Route::get('auth/logout', 'Auth\LoginController@getLogout');
 
+	// // Registration Routes
+	// Route::get('auth/register', 'Auth\RegisterController@getRegister');
+	// Route::post('auth/register', 'Auth\RegisterController@postRegister');
+
+	// For item SLUG  
+	Route::get('getfinish/{slug}',['as' => 'getfinish.single','uses' => 'GetfinishController@getSingle'])->where('slug', '[\w\d\-\_]+');
 	Route::get('getfinish', ['uses' => 'GetfinishController@getIndex', 'as' => 'getfinish.index']);
 
-
-	Route::get('/', 'PagesController@getIndex');
+	// 首頁
+	//Route::get('/', 'PagesController@getIndex');
+	Route::get('/', 'ItemController@index');	
 
 	Route::get('welcome', 'PagesController@getWelcome');
 
@@ -40,5 +50,10 @@ Route::group(['middleware' => ['web']], function() {
 
 	Route::get('contact', 'PagesController@getContact');
 
+	// 待辦事項
 	Route::resource('items', 'ItemController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

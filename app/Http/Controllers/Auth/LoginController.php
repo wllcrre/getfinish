@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -34,6 +34,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        //如果你是guest，就可以訪問 Login page, 但是你不能訪問 Logout page
         $this->middleware('guest')->except('logout');
     }
 }

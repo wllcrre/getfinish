@@ -9,7 +9,7 @@ class GetfinishController extends Controller
 {
     
 	public function getIndex() {
-		$items = Item::paginate(10);
+		$items = Item::paginate(30);
 
 		return view('getfinish.index')->withItems($items);
 	}

@@ -36,7 +36,17 @@
 							<td>{{ $item->name }}</td>
 							<td>{{ substr($item->body, 0,25) }} {{ (strlen($item->body) > 25 ? "..." : "" ) }}</td>
 							<td>{{ date('Y-m-j h:i a', strtotime($item->created_at)) }}</td>
-							<td><a href="{{ route('items.show', $item->id) }}" class='btn btn-default btn-sm'>View</a><a href="{{ route('items.edit', $item->id) }}"  class='btn btn-default btn-sm'>Edit</a></td>
+							<td><a href="{{ route('items.show', $item->id) }}" class='btn btn-default btn-sm'>View</a><a href="{{ route('items.edit', $item->id) }}"  class='btn btn-default btn-sm'>Edit</a>
+
+
+							</td>
+
+							<td>
+								{!! Form::open(['route' => ['items.destroy', $item->id], 'method' => 'DELETE' ]) !!}
+								
+								{!! Form::submit('Delete', ['class' => 'b'])  !!}
+								{!! Form::close() !!}
+							</td>
 						</tr>
 
 					@endforeach
