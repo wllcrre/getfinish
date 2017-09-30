@@ -56,7 +56,7 @@ class ItemController extends Controller
                 'name' => 'required|max:255',
                 'category_id'   => 'required|integer',
                 //驗證唯一項目：　unique:items,slug
-                'slug' => 'required|alpha_dash|min:5|max:255|unique:items,slug'  
+                'slug' => 'required|alpha_dash|min:2|max:255|unique:items,slug'  
                 //'body' => 'required'
 
             )); 
@@ -146,7 +146,7 @@ class ItemController extends Controller
                 'category_id' => 'required|integer',
 
                 //驗證唯一項目：　unique:items,slug
-                'slug' => 'required|alpha_dash|min:5|max:255|unique:items,slug'                
+                'slug' => 'required|alpha_dash|min:2|max:255|unique:items,slug'                
                 // 'body' => 'required'
             ));
         }
