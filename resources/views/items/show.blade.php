@@ -8,6 +8,7 @@
 		<div class="col-md-8">
 			<h1>{{ $item->name }}</h1>
 			<p>{{ $item->slug }}</p>
+			<p>分類: {{ $item->category->name }}</p>
 			<p class='lead'>{{ $item->body }}</p>
 		</div>
 
