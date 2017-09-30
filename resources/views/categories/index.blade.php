@@ -30,7 +30,9 @@
 
 				@foreach ($categories as $category)
 					<tr>
-						<th><h4>{{ $category->name }}</h4></th>
+						<th>
+							<h4 class="text-primary">{{ $category->name }}</h4>
+						</th>
 							<td></td>
 							<td></td>
 							<td></td>
