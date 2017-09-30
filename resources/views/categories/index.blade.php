@@ -1,21 +1,19 @@
 @extends('main')
 
-@section('title', '| All items')
+@section('title', '| All Items')
 
 @section('content')
 
 	<div class="row">
 		<div class="col-md-10">
-			<h1>All Items</h1>
+			<h1></h1>
 		</div>
 
 		<div class="">
 			<a href="{{ route('items.create') }}" class='btn btn-lg btn-block btn-primary'>Create New Item</a>
 		</div>
-		<div class="col-md-12">
-
-		</div>
 	</div><!-- end of .row -->
+
 
 	<div class="row">
 		<div class="col-md-12">
@@ -29,7 +27,13 @@
 				</thead>
 
 				<tbody>
-					@foreach($items as $item)
+
+				@foreach ($categories as $category)
+					<tr>
+						<td><h4>{{ $category->name }}</h4></td>
+					</tr>
+
+					@foreach($category->items as $item)
 						
 						<tr>
 							<th>{{ $item->id }}</th>
@@ -50,16 +54,19 @@
 						</tr>
 
 					@endforeach
+
+				@endforeach		
 				</tbody>
 			</table>
 
 			<p class="text-center">
 				{{-- 頁碼 --}}
-				{!! $items->links(); !!}
+				{{-- {!! $items->links(); !!} --}}
 			</p>			
 		</div>
 
 
 	</div>
+
 
 @stop

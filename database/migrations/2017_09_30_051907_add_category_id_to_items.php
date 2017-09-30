@@ -26,7 +26,7 @@ class AddCategoryIdToItems extends Migration
     public function down()
     {
         Schema::table('items', function (Blueprint $table) {
-            //
+            $table->dropColumn('category_id');
         });
     }
 }

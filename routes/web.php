@@ -52,6 +52,10 @@ Route::group(['middleware' => ['web']], function() {
 
 	// 待辦事項
 	Route::resource('items', 'ItemController');
+
+	// 分類
+	Route::resource('categories', 'CategoryController');
+
 });
 
 Auth::routes();
