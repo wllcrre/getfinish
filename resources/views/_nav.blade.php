@@ -20,9 +20,6 @@
 
 
           @auth
-            <li class="nav-item {{ Request::is('items/create') ? "active" : "" }}">
-              <a class="nav-link" href="/items/create">新增事項</a>
-            </li>
             <li class="nav-item {{ Request::is('categories/create') ? "active" : "" }}">
               <a class="nav-link" href="{{ route('categories.create') }}">分類管理</a>
             </li>

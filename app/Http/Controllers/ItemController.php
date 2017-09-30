@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;//應該指的是 Item Model
+use App\Category;
 use Session;//For Message 上傳成功訊息 Session::flash()
 
 
@@ -21,7 +22,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //create a variablel and store all posts in it from database
+        //create a variablel and store all items in it from database
         // $items = Item::all();
         $items = Item::orderBy('id','asc')->paginate(30);
         //example http://getfinish.dev/items?page=2
@@ -37,7 +38,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('items.create');
+        $categories = Category::all();
+        return view('items.create')->withCategories($categories);
+
     }
 
     /**
@@ -51,10 +54,11 @@ class ItemController extends Controller
         //validate the data
         $this->validate($request,array(
                 'name' => 'required|max:255',
-                
+                'category_id'   => 'required|integer',
                 //驗證唯一項目：　unique:items,slug
                 'slug' => 'required|alpha_dash|min:5|max:255|unique:items,slug'  
                 //'body' => 'required'
+
             )); 
 
         //store in the database
@@ -62,6 +66,7 @@ class ItemController extends Controller
 
         $item->name = $request->name;
         $item->body = $request->body;
+        $item->category_id = $request->category_id;
         $item->slug = $request->slug;
 
         //kevin heree 待create view更新後修改這裏
@@ -74,7 +79,7 @@ class ItemController extends Controller
         Session::flash('success', '待辦事項已成功建立!');
 
         //redirect to another URL
-        return redirect()->route('items.index');
+        return redirect()->route('categories.index');
 
     }
 
@@ -101,8 +106,15 @@ class ItemController extends Controller
         // find the item in database and save as a var
         $item = Item::find($id);
 
-        //return the view and pass the item var
-        return view('items.edit')->withItem($item);
+        $categories = Category::all();
+        $cats = array();
+        foreach ($categories as $category) {
+            $cats[$category->id] = $category->name;
+        }
+         // return the view and pass in the var we previously created
+
+        return view('items.edit')->withItem($item)->withCategories($cats);
+
 
     }
 
@@ -115,7 +127,7 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //　這裏只要執行資料庫更新,不用顯示頁面，因為在 edit() 已經有產生 posts.edit 頁面了。
+        //　這裏只要執行資料庫更新,不用顯示頁面，因為在 edit() 已經有產生 items.edit 頁面了。
 
         // Validate the data
         $item = Item::find($id);
@@ -123,12 +135,15 @@ class ItemController extends Controller
         if ($request->input('slug') == $item->slug) {
 
             $this->validate($request, array(
-                'name' => 'required|max:255'
+                'name' => 'required|max:255',
+                'category_id' => 'required|integer'
+
                 // 'body'  => 'required'
             ));
         } else {
             $this->validate($request, array(
                 'name' => 'required|max:255',
+                'category_id' => 'required|integer',
 
                 //驗證唯一項目：　unique:items,slug
                 'slug' => 'required|alpha_dash|min:5|max:255|unique:items,slug'                
@@ -141,6 +156,7 @@ class ItemController extends Controller
 
         $item->name = $request->input('name');
         $item->slug = $request->input('slug');
+        $item->category_id = $request->input('category_id');
         $item->body = $request->input('body');
 
         $item->save();        
@@ -148,8 +164,8 @@ class ItemController extends Controller
         // set flash data with success message
         Session::flash('success', 'The blog item was successfully save!');
 
-        //redirect with flash data to posts.index
-        return redirect()->route('items.index', $item->id);        
+        //redirect with flash data to items.index
+        return redirect()->route('categories.index', $item->id);        
 
     }
 
@@ -165,7 +181,7 @@ class ItemController extends Controller
         $item->delete();
 
         Session::flash('success', "this item successfully delete");
-        return redirect()->route('items.index');
+        return redirect()->route('categories.index');
 
     }
 }

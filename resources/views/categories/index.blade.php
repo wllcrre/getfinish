@@ -6,7 +6,7 @@
 
 	<div class="row">
 		<div class="col-md-10">
-			<h1></h1>
+			<h1>   </h1>
 		</div>
 
 		<div class="">
@@ -30,7 +30,12 @@
 
 				@foreach ($categories as $category)
 					<tr>
-						<td><h4>{{ $category->name }}</h4></td>
+						<th><h4>{{ $category->name }}</h4></th>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>													
 					</tr>
 
 					@foreach($category->items as $item)

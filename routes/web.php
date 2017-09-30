@@ -42,7 +42,7 @@ Route::group(['middleware' => ['web']], function() {
 
 	// 首頁
 	//Route::get('/', 'PagesController@getIndex');
-	Route::get('/', 'ItemController@index');	
+	Route::get('/', 'CategoryController@index');	
 
 	Route::get('welcome', 'PagesController@getWelcome');
 
